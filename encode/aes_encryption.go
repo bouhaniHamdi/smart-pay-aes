@@ -25,29 +25,7 @@ import (
 
 // v. Generate encrypted value of Plain Text.
 
-// vi. Convert the encrypted value to Hex and ensure TAG value is incorporated. i.e.
 
-// byteToHex(CIPHER+TAG). Some programming languages like Java by default append TAG value so, in such cases directly convert the cipher text to hex value.
-
-// vii. Append the Hex value of IV create on Step ii.
-
-// viii. Pass the encrypted value to SmartPay Application. So, the encrypted value should be like following:
-
-// ENC_REQUEST = Hex(IV) + Hex(Cipher+Tag)
-
-// ix. Following is sample step wise output for help in programming
-
-// PLAIN_TEXT = “Hello World”
-// WORKING_KEY = “secretKey12345678998765432112345”
-// RANDOM_IV_HEX = “d99c56fd684cb7ca1a3cd2c73037482c”
-// CIPHERTEXT (with Tag) HEX VALUE = 1d0476a660c926b2d5ff80a7813fdc91d41e5bedebe9c4499899cd
-
-// ENC_REQUEST (IV HEX VALUE + CIPHERTEXT HEX VALUE ):
-// d99c56fd684cb7ca1a3cd2c73037482c1d0476a660c926b2d5ff80a7813fdc91d41e5bedebe9c4499899cd
-
-// x. Similarly, for decryption extract first 32 characters of encrypted string.
-// xi. Convert the extracted string from Hex to Byte. This will give IV in bytes.
-// xii. This IV can be used for initializing cipher block and carrying out decryption.
 
 func GenerateEncryptedValuePlainText(plainText, key string) ([]byte, []byte, error) {
 	plainTextBytes := []byte(plainText)
